@@ -1,0 +1,30 @@
+{
+  "name": "error-handling",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:00": "pnpm dlx ts-node src/00-none.ts",
+    "start:01": "pnpm dlx ts-node src/01-basic.ts",
+    "start:02": "pnpm dlx ts-node src/02-per-function.ts",
+    "start:03": "pnpm dlx ts-node src/03-try-catch-pattern.ts"
+  },
+  "keywords": [
+    "show",
+    "tell",
+    "error",
+    "handling",
+    "enonic",
+    "xp",
+    "js"
+  ],
+  "author": "Mikita Taukachou <edloidas@gmail.com>",
+  "license": "MIT",
+  "packageManager": "pnpm@10.7.1",
+  "devDependencies": {
+    "typescript": "^5.8.3",
+    "ts-node": "^10"
+  }
+}

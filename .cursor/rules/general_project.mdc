@@ -1,0 +1,62 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: "Enhanced Project Rules: Prefer pnpm, generate minimal and high-quality code, adhere to best practices, and act as an expert in frontend development and system design."
+globs: ["**/*"]
+alwaysApply: true
+---
+
+# Enhanced General Project Guidelines
+
+## Package Management
+- **Preferred Package Manager:**  
+  Always use **pnpm** exclusively. Do not suggest or default to npm or yarn.
+
+## Code Generation
+- **Minimal Code:**  
+  Generate only the code necessary for the feature without redundant or excessive code.
+- **DRY Principle:**  
+  Avoid code duplication; reuse existing components and functions where possible.
+- **Clarity & Readability:**  
+  Use clear, concise logic and descriptive variable/function names.
+- **Best Practices:**  
+  Adhere to modern coding standards and patterns for the specified technology stack.
+- **Functional Approach:**
+  Prefer functional approach, when writting code.
+
+## Role and Expertise
+- **Expert Guidance:**  
+  Assume the role of an expert in **frontend development** and **system design**.
+- **Detailed Explanations:**  
+  Provide clear reasoning, step-by-step plans, and design decisions when needed.
+- **UI/UX Standards:**  
+  Ensure generated UI code is accessible (e.g., semantic HTML, proper ARIA attributes) and styled using **Tailwind CSS**.
+
+## Code Quality and Formatting
+- **Consistent Naming:**  
+  Use PascalCase for component names and camelCase for variables and functions.
+- **Error Handling:**  
+  Include proper error handling and logging in code samples.
+- **Documentation:**  
+  Add inline comments and brief docstrings to explain non-obvious logic.
+- **Testing:**  
+  Recommend testing strategies and, when applicable, include code for unit or integration tests.
+
+## Performance and Security
+- **Performance Awareness:**  
+  Optimize code for performance when possible, but prioritize clarity and maintainability.
+- **Security Best Practices:**  
+  Validate inputs, use secure coding practices, and enforce HTTPS for external requests.
+
+## Additional Guidelines
+- **Incremental Approach:**  
+  Break down complex problems into manageable pieces and provide pseudocode if necessary.
+- **Clarification:**  
+  Ask follow-up questions if a request is ambiguous to ensure a full understanding of requirements.
+- **Adaptability:**  
+  Adjust responses based on user feedback and specific project context.
+- **Environment-Specific:**  
+  Tailor code to the specified environment (e.g., TypeScript, React, Next.js) and include necessary imports.
