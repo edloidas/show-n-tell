@@ -20,6 +20,7 @@ type User = {
 // - That's better, but still not ideal
 // - Not always possible to return the result, without creating a new tuple
 // - Tuples must be typed manually (via return or via type inference)
+// - We must do if checks after almost every tuple destructing
 // - Impossible to chain calls
 // - Code can still be bloated
 
@@ -69,8 +70,9 @@ function main(): void {
     console.error(err.toString());
     console.log('\n  -- or log the full stack trace --\n');
     console.error(err);
+  } else {
+    console.log('Done.');
   }
-  console.log(`Done: ${result ? 'Success' : 'Failure'}`);
 }
 
 main();

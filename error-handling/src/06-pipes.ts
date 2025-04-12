@@ -43,7 +43,7 @@ function safeModifyNode(
   data: User
 ): Result<RepoNode<User>, AppError> {
   return Result.try(() => modifyNode(id, data), ERRORS.REPO_NODE_NOT_FOUND).tap(
-    (node) => console.log(`3. Node Modified: ${node}`)
+    (node) => console.log(`3. Node Modified: ${JSON.stringify(node)}`)
   );
 }
 

@@ -12,7 +12,7 @@ type User = {
 };
 
 // ! We assume that imported functions in our examples are black boxes
-// - Error in JS is thrown, and can not be returned, so we need to log them
+// - Error in JS is thrown, and can not be returned (in type safe way), so we need to log them
 // - Rethrowing new error leads to loss of the context (stack trace in browser):
 //   - We can reuse the old error `throw error;`
 //   - We can use cause `throw new Error('...', { cause: error });` to chain them
@@ -71,7 +71,9 @@ function fetchAndUpdateUser(): RepoNode<User> | undefined {
 
 function main(): void {
   const result = fetchAndUpdateUser();
-  console.log(`Done: ${result ? 'Success' : 'Failure'}`);
+  if (result) {
+    console.log('Done.');
+  }
 }
 
 main();
