@@ -16,7 +16,8 @@ export const VALID_JSON = '{"name": "John", "age": 30}';
 export const INVALID_JSON = 'name: John';
 
 //
-//* 1. Fetch data
+// * 1. Fetch data
+// May fail on http response, timeout, etc.
 //
 export function fetchCurrentUser(ok = true, valid = true): string {
   if (!ok) {
@@ -26,14 +27,16 @@ export function fetchCurrentUser(ok = true, valid = true): string {
 }
 
 //
-//* 2. Parse data
+// * 2. Parse data
+// LLM may return non-parsable result
 //
 export function parseData<T extends Record<string, unknown>>(input: string): T {
   return JSON.parse(input) as T;
 }
 
 //
-//* 3. Repo operations
+// * 3. Repo operations
+// May fail on timeout, node no longer exist, etc.
 //
 export function modifyNode<T extends Record<string, unknown>>(
   id: string,

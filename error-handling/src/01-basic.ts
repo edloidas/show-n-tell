@@ -11,9 +11,13 @@ type User = {
   age: number;
 };
 
-// All errors must be handled, as we can't stop execution of the script
-// In Nashorn, we can't get proper stack traces
-// We can't get the exact line of code that threw an error
+// All errors must be handled, as we can't stop execution of the script.
+// Main problems:
+// - In Nashorn, we can't get proper stack traces
+// - The exact function and line of code that threw an error is unknown (unless we look into unminified JS)
+// - In Nashorn, we log the code line, where log.error() is called, not the line, where the error is thrown
+// - Impossible to explain to the client part what went wrong
+// - Can't fix the error, must roll back to previous state
 
 function fetchAndUpdateUser(): RepoNode<User> {
   const data = fetchCurrentUser(false);
@@ -28,13 +32,13 @@ function fetchAndUpdateUser(): RepoNode<User> {
   return node;
 }
 
-function run(): void {
+function main(): void {
   try {
     fetchAndUpdateUser();
-    console.log('Done');
+    console.log('Done.');
   } catch (err) {
     console.error(`Error was thrown somewhere: ${err}`);
   }
 }
 
-run();
+main();

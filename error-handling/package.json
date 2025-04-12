@@ -9,7 +9,10 @@
     "start:00": "pnpm dlx ts-node src/00-none.ts",
     "start:01": "pnpm dlx ts-node src/01-basic.ts",
     "start:02": "pnpm dlx ts-node src/02-per-function.ts",
-    "start:03": "pnpm dlx ts-node src/03-try-catch-pattern.ts"
+    "start:03": "pnpm dlx ts-node src/03-try-catch-pattern.ts",
+    "start:04": "pnpm dlx ts-node src/04-monad-example.ts",
+    "start:05": "pnpm dlx ts-node src/05-result-pattern.ts",
+    "start:06": "pnpm dlx ts-node src/06-pipes.ts"
   },
   "keywords": [
     "show",
@@ -22,9 +25,10 @@
   ],
   "author": "Mikita Taukachou <edloidas@gmail.com>",
   "license": "MIT",
-  "packageManager": "pnpm@10.7.1",
+  "packageManager": "pnpm@10.8.0",
   "devDependencies": {
-    "typescript": "^5.8.3",
-    "ts-node": "^10"
+    "@types/node": "^22.14.1",
+    "ts-node": "^10",
+    "typescript": "^5.8.3"
   }
 }

@@ -13,10 +13,17 @@ type User = {
   age: number;
 };
 
-// That's better, but still not ideal
 // Assume that tryCatch wrappers will go directly into the code of unsafe functions or remain one-liners
-// It's obvious, that we can just return the result, and not construct a new tuple
-// It'll be better to chain calls, whenever possible
+
+// + We reduce the risk of unhandled errors by integrating error conditions into the type system
+// + Easy mapping between server and client parts
+// - That's better, but still not ideal
+// - Not always possible to return the result, without creating a new tuple
+// - Tuples must be typed manually (via return or via type inference)
+// - Impossible to chain calls
+// - Code can still be bloated
+
+// ? "Look what they need to mimic a fraction of our power" meme
 
 function safeFetchCurrentUser(): Try<string> {
   return tryCatch(() => fetchCurrentUser(true, false), ERRORS.REST_FETCH_ERROR);
@@ -55,7 +62,7 @@ function fetchAndUpdateUser(): Try<RepoNode<User>> {
   return [node, null];
 }
 
-function run(): void {
+function main(): void {
   const [result, err] = fetchAndUpdateUser();
   if (err) {
     // Here error can be checked by code and localized, add colors, etc.
@@ -66,4 +73,4 @@ function run(): void {
   console.log(`Done: ${result ? 'Success' : 'Failure'}`);
 }
 
-run();
+main();

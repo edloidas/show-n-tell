@@ -1,0 +1,18 @@
+root = true
+
+[*]
+end_of_line = lf
+insert_final_newline = true
+charset = utf-8
+
+
+[*.{ts,js}]
+indent_size = 2
+max_line_length = 80
+indent_style = space
+trim_trailing_whitespace = true
+quote_type = single
+
+# Markdown files
+[*.md]
+trim_trailing_whitespace = false
