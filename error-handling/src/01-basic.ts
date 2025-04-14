@@ -13,10 +13,9 @@ type User = {
 
 // All errors must be handled, as we can't stop execution of the script.
 // Main problems:
-// - In Nashorn, we can't get proper stack traces
-// - The exact function and line of code that threw an error is unknown (unless we look into non-minified JS)
-// - In Nashorn, we log the code line, where log.error() is called, not the line, where the error is thrown
-// - Impossible to explain to the client part what went wrong
+// - In Nashorn, we can't get proper stack traces if the code is transpiled
+//   - `e.stack` is available, but it may not be useful
+//   - Transpiled, bundled, and minified code make it very hard to debug
 // - Can't fix the error, must roll back to previous state
 
 function fetchAndUpdateUser(): RepoNode<User> {
