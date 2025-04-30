@@ -16,8 +16,14 @@ export abstract class Result<T, E> {
   /** Throw error if trying to unwrap a failure (optional utility) */
   abstract unwrap(): T;
 
+  /** Perform a side effect on the Result without changing the Result */
+  tap(fn: () => void): Result<T, E> {
+    fn();
+    return this;
+  }
+
   /** Perform a side effect on the Ok value without changing the Result */
-  abstract tap(fn: (value: T) => void): Result<T, E>;
+  abstract tapOk(fn: (value: T) => void): Result<T, E>;
 
   /** Perform a side effect on the Err value without changing the Result */
   abstract tapErr(fn: (error: E) => void): Result<T, E>;
@@ -101,7 +107,7 @@ export class Ok<T, E> extends Result<T, E> {
     return this.value;
   }
 
-  tap(fn: (value: T) => void): Result<T, E> {
+  tapOk(fn: (value: T) => void): Result<T, E> {
     fn(this.value);
     return this;
   }
@@ -152,7 +158,7 @@ export class Err<T, E> extends Result<T, E> {
     throw new Error(`Tried to unwrap an Err: ${this.error}`);
   }
 
-  tap(_: (value: T) => void): Result<T, E> {
+  tapOk(_: (value: T) => void): Result<T, E> {
     return this; // Do nothing on Ok for Err
   }
 

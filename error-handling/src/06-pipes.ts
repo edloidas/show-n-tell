@@ -28,23 +28,24 @@ function safeFetchCurrentUser(): Result<string, AppError> {
   return Result.try(
     () => fetchCurrentUser(true, false),
     ERRORS.REST_FETCH_ERROR
-  ).tap((json) => console.log(`1. User Fetched: ${json}`));
+  ).tapOk((json) => console.log(`1. User Fetched: ${json}`));
 }
 
 function safeParseData(data: string): Result<User, AppError> {
   return Result.tryCatch<User, AppError>(
     () => parseData<User>(data),
     (e) => ERRORS.FUNC_PARSE_ERROR.withMsg(String(e))
-  ).tap((data) => console.log(`2. Data Parsed: ${data}`));
+  ).tapOk((data) => console.log(`2. Data Parsed: ${data}`));
 }
 
 function safeModifyNode(
   id: string,
   data: User
 ): Result<RepoNode<User>, AppError> {
-  return Result.try(() => modifyNode(id, data), ERRORS.REPO_NODE_NOT_FOUND).tap(
-    (node) => console.log(`3. Node Modified: ${JSON.stringify(node)}`)
-  );
+  return Result.try(
+    () => modifyNode(id, data),
+    ERRORS.REPO_NODE_NOT_FOUND
+  ).tapOk((node) => console.log(`3. Node Modified: ${JSON.stringify(node)}`));
 }
 
 function fetchAndUpdateUser(): Result<RepoNode<User>, AppError> {
@@ -52,12 +53,12 @@ function fetchAndUpdateUser(): Result<RepoNode<User>, AppError> {
   // Or `pipe(Result.ok(undefined), safeFetchCurrentUser, ...)`
   return pipe(safeFetchCurrentUser(), safeParseData, (user) =>
     safeModifyNode(VALID_ID, user)
-  );
+  ).tap(() => console.log('Clean up finally-like logic here.'));
 }
 
 function main(): void {
   fetchAndUpdateUser()
-    .tap(() => console.log('Done.'))
+    .tapOk(() => console.log('Done.'))
     .tapErr(Console.errorTap());
 }
 

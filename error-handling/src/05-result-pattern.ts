@@ -38,6 +38,7 @@ function safeModifyNode(id: string, data: User): Result<RepoNode<User>, Error> {
   );
 }
 
+// Looks like Promise.then()
 function fetchAndUpdateUser(): Result<RepoNode<User>, Error> {
   return safeFetchCurrentUser()
     .chain((data) => safeParseData(data))
@@ -47,6 +48,7 @@ function fetchAndUpdateUser(): Result<RepoNode<User>, Error> {
 function main(): void {
   const result = fetchAndUpdateUser();
 
+  // But not like Promise.then().catch()
   if (result.isErr()) {
     console.error(result);
   } else {
