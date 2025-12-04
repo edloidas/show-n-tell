@@ -12,7 +12,8 @@
     "start:03": "pnpm dlx ts-node src/03-try-catch-pattern.ts",
     "start:04": "pnpm dlx ts-node src/04-monad-example.ts",
     "start:05": "pnpm dlx ts-node src/05-result-pattern.ts",
-    "start:06": "pnpm dlx ts-node src/06-pipes.ts"
+    "start:06": "pnpm dlx ts-node src/06-pipes.ts",
+    "start:07": "pnpm dlx ts-node src/07-effect.ts"
   },
   "keywords": [
     "show",
@@ -30,5 +31,8 @@
     "@types/node": "^22.14.1",
     "ts-node": "^10",
     "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "effect": "^3.19.8"
   }
 }
